@@ -1,6 +1,7 @@
 require 'thor'
 require 'pry'
 require 'codewars_api_ruby'
+require 'codewars_cli/file_creator'
 require "codewars_cli/presenter"
 require "codewars_cli/kata"
 require "codewars_cli/user"
