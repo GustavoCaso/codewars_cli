@@ -5,6 +5,7 @@ module CodewarsCli
     CONFIG_CONTENTS = {
       api_key: '',
       language: '',
+      folder: '',
     }
 
     def self.write(value, key, options)
@@ -36,6 +37,10 @@ module CodewarsCli
 
     def self.language
       config_data[:language] if config_data
+    end
+
+    def self.folder
+      config_data[:folder] if config_data
     end
 
     def self.config_file

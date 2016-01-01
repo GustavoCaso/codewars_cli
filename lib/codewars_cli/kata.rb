@@ -24,7 +24,7 @@ module CodewarsCli
     end
 
     def create_file
-      FileCreator.create(get_kata)
+      FileCreator.create(get_kata, language)
     end
 
     private

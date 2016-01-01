@@ -1,0 +1,34 @@
+# Meta Information
+Project ID: <%= project_id %>
+
+Solution ID: <%= solution_id %>
+
+# Kata Description
+
+Name: <%= name %>
+
+Author: <%= author %>
+
+Rank: <%= rank %>
+
+Slug: <%= slug %>
+
+Tags: <%= tags.join(', ') %>
+
+## Task
+
+<%= description %>
+
+## Code
+
+```<%= language %>
+<%= setup %>
+```
+<% unless example_fixture.empty? %>
+## Test Example
+
+```<%= language %>
+<%= example_fixture %>
+```
+<% end %>
+
