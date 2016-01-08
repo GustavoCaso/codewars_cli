@@ -1,5 +1,6 @@
 module CodewarsCli
   class User
+    include Helpers
     def self.fetch(username_or_id)
       api_key = Configuration.api_key
       fail Thor::Error, "ERROR: You must config the api_key\nSOLUTION: Set up with `config api_key KEY`" if api_key.empty?
@@ -18,7 +19,7 @@ module CodewarsCli
     end
 
     def print_description
-      Presenter.new.display_user_info(get_user)
+      presenter.display_user_info(get_user)
     end
 
     private

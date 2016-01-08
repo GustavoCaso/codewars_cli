@@ -1,4 +1,3 @@
-require 'codewars_cli/helpers'
 module CodewarsCli
   class Presenter < Thor
     include Helpers

@@ -1,4 +1,3 @@
-require 'codewars_cli/helpers'
 require 'fileutils'
 require 'erb'
 
@@ -61,11 +60,7 @@ module CodewarsCli
     end
 
     def _info(msg)
-      _presenter.info_message(msg)
-    end
-
-    def _presenter
-      @presenter ||= Presenter.new
+      presenter.info_message(msg)
     end
   end
 end

@@ -5,5 +5,9 @@ module CodewarsCli
       object.extend(Concerns::AttributesMethods)
       object
     end
+
+    def presenter
+      @presenter ||= Presenter.new
+    end
   end
 end
