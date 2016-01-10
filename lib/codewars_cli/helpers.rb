@@ -6,6 +6,14 @@ module CodewarsCli
       object
     end
 
+    def info(msg, color=:green)
+      presenter.info(msg, color)
+    end
+
+    def error(msg)
+      presenter.error(msg)
+    end
+
     def presenter
       @presenter ||= Presenter.new
     end

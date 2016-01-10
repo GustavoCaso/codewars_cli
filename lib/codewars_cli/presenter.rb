@@ -3,7 +3,7 @@ module CodewarsCli
     include Helpers
     no_commands do
       def display_user_info(object)
-        return error_message(object.reason) unless object.status == 200
+        return error_message(_user_error_message(object)) unless object.status == 200
         say set_color("Displaying information about #{object.username}", :magenta)
         object = extend_object(object)
         attr = object.attributes
@@ -14,16 +14,20 @@ module CodewarsCli
         print_table(_build_column_info(languague_attributes))
       end
 
-      def info_message(message)
-        say set_color(message, :green)
+      def info(message, color)
+        say set_color(message, color)
       end
 
-      def error_message(reason)
-        say set_color("ERROR: Fetching Information\nREASON: #{reason.upcase}", :red)
+      def error(message)
+        say set_color(message, :red)
       end
     end
 
     private
+
+    def _user_error_message(object)
+      "ERROR: Fetching Information\nREASON: #{object.reason.upcase}"
+    end
 
     def _build_column_info(info)
       info.inject([_set_headers]) do |arr, (key,value)|

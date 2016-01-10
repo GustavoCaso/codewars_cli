@@ -4,6 +4,7 @@ require 'erb'
 module CodewarsCli
   class FileCreator
     include Helpers
+    DESCRIPTION_FILE_NAME = 'description.md'
     def self.create(kata_info, language)
       folder_path = Configuration.folder
       fail Thor::Error, "ERROR: You must config the folder\nSOLUTION: Set up with `config folder Folder`" if folder_path.empty?
@@ -25,7 +26,7 @@ module CodewarsCli
     private
 
     def _create_missing_dirs
-      _info("Creating necessary directories #{_destination_path}")
+      info("Creating necessary directories #{_destination_path}")
       FileUtils.mkdir_p(_destination_path)
     end
 
@@ -46,21 +47,23 @@ module CodewarsCli
 
     def _create_markdown_file(content)
       Dir.chdir(_destination_path) do
-        _info("Creating Kata descrition file #{_kata_file_name}")
-        File.open(_kata_file_name,'w') { |f| f.write content }
+        info("Creating Kata descrition file")
+        File.open(DESCRIPTION_FILE_NAME,'w') { |f| f.write content }
+        info("Creating Kata solution file")
+        File.open(_solution_file_name, 'w+')
       end
     end
 
-    def _kata_file_name
-      "#{data.name}.md"
+    def _solution_file_name
+      "solution.#{_language_extension}"
+    end
+
+    def _language_extension
+      CodewarsCli::Language::EXTENSIONS[language]
     end
 
     def _destination_path
       File.join(ENV['HOME'],folder_path,data.slug,language)
-    end
-
-    def _info(msg)
-      presenter.info_message(msg)
     end
   end
 end
