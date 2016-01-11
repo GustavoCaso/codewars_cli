@@ -9,7 +9,8 @@ module CodewarsCli
       if kata_name
         new(kata_name, language, api_key)
       else
-        fail Thor::Error, "ERROR: You must provide the name of the kata"
+        error("ERROR: You must provide the name of the kata")
+        exit(1)
       end
     end
 
@@ -25,7 +26,7 @@ module CodewarsCli
       kata_info = _get_kata_id_from_description_file
       code = _get_kata_solution_code
       response = client.attemp_solution(kata: kata_info, code: code)
-      Deferred.new(kata_name, response, client)
+      Deferred.new(kata_name, language, response, client)
     end
 
     private
@@ -55,7 +56,10 @@ module CodewarsCli
 
     def _kata_path
       path = File.join(ENV['HOME'], Configuration.folder, kata_name, language)
-      fail Thor::Error, "ERROR: The kata you specify is not found in your folder" unless File.exist?(path)
+      unless File.exist?(path)
+        presenter.display_katas_info(kata_name, language)
+        exit(1)
+      end
       path
     end
 
