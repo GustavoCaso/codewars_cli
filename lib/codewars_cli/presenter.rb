@@ -4,7 +4,7 @@ module CodewarsCli
     no_commands do
       def display_user_info(object)
         return error_message(_user_error_message(object)) unless object.status == 200
-        say set_color("Displaying information about #{object.username}", :magenta)
+        info("Displaying information about #{object.username}", :magenta)
         object = extend_object(object)
         attr = object.attributes
         languague_attributes = attr.delete(:languages)
@@ -12,6 +12,14 @@ module CodewarsCli
           _print_attributes(k,v)
         end
         print_table(_build_column_info(languague_attributes))
+      end
+
+      def display_katas_info(kata_name, language)
+        error("The is no kata with that name '#{kata_name}' and language '#{language}'")
+        info('To help here is a list of all your katas order by language', :magenta)
+        _katas_info.each do |language, katas|
+          _print_attributes(language, katas.join(','))
+        end
       end
 
       def info(message, color)
@@ -24,6 +32,22 @@ module CodewarsCli
     end
 
     private
+
+    def _katas_info
+      Dir.chdir(_katas_folder) do
+        Dir.glob('**/*').select do |fn|
+          File.directory?(fn) && fn.include?('/')
+        end.map{|arr| arr.split('/')}.inject({}) do |hash, arr|
+          hash[arr.last.to_sym] = []
+          hash[arr.last.to_sym] << arr.first
+          hash
+        end
+      end
+    end
+
+    def _katas_folder
+      File.join(ENV['HOME'], Configuration.folder)
+    end
 
     def _user_error_message(object)
       "ERROR: Fetching Information\nREASON: #{object.reason.upcase}"
