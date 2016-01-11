@@ -1,9 +1,11 @@
 module CodewarsCli
   class Deferred
     include Helpers
-    attr_reader :kata_name, :response, :client
-    def initialize(kata_name, response, client)
+    REQUEST_TIMES = 10
+    attr_reader :kata_name, :language, :response, :client
+    def initialize(kata_name, language, response, client)
       @kata_name = kata_name
+      @language = language
       @response = response
       @client = client
       _read_deferred do
@@ -29,7 +31,7 @@ module CodewarsCli
       if result.valid
         info 'The solution has passed all tests on the server.'
         info 'If you are happy with your solution please type'
-        info "codewars finalize --kata-name=#{kata_name}", :blue
+        info "codewars finalize --kata-name=#{kata_name} --language=#{language}", :blue
       else
         error 'The solution has not passed tests on the server. Response:'
         fail Thor::Error, error(result.reason)
@@ -42,7 +44,7 @@ module CodewarsCli
     end
 
     def _handle_deferred
-      10.times do
+      REQUEST_TIMES.times do
         result = client.deferred_response(dmid: response.dmid)
         return result if result.success
         sleep 1
