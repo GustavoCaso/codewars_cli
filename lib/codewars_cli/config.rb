@@ -10,15 +10,15 @@ module CodewarsCli
     long_desc <<-LONGDESC
       `language LANGUAGE` will store the prefer language for trainnig katas.
 
-      Available options are:
-        - Ruby
-        - Javascript
-        - Java
-        - Coffescript
-        - Haskell
-        - C++
-        - Python
-        - Clojure
+      Available options are:\n
+        - Ruby\n
+        - Javascript\n
+        - Java\n
+        - Coffescript\n
+        - Haskell\n
+        - C#\n
+        - Python\n
+        - Clojure\n
     LONGDESC
     method_options update: :boolean
     def language(language)
