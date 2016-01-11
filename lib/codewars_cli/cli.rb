@@ -28,7 +28,7 @@ module CodewarsCli
     option :kata_name, banner: 'The name of the kata you want to finalize'
     option :language, banner: 'The language of the kata if not provided will get the deafult one'
     def finalize
-      Finalize.kata(options[:kata_name], options[:language])
+      Finalize.find(options[:kata_name], options[:language])
     end
   end
 end
