@@ -1,5 +1,4 @@
 require 'thor'
-require 'pry'
 require 'codewars_api_ruby'
 require "codewars_cli/helpers"
 require "codewars_cli/presenter"

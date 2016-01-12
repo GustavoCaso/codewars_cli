@@ -1,6 +1,7 @@
 require 'yaml'
 module CodewarsCli
   module Configuration
+    include Helpers
     CONFIG_FILE = '.codewars.rc.yml'
     CONFIG_CONTENTS = {
       api_key: '',
@@ -12,9 +13,9 @@ module CodewarsCli
       create_config_file unless File.exists? config_file
       update_value(value, key) && return if options['update'] && !send(key).empty?
       if !send(key).empty?
-        STDOUT.puts "Do you want to overwrite #{key} provide --update option"
+        info "Do you want to overwrite #{key} provide --update option"
       else
-        STDOUT.puts "Updating config file located in: #{config_file} with #{key}: #{value}"
+        info "Updating config file located in: #{config_file} with #{key}: #{value}"
         update_value(value, key)
       end
     end

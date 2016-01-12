@@ -3,7 +3,7 @@ module CodewarsCli
     include Helpers
     no_commands do
       def display_user_info(object)
-        return error_message(_user_error_message(object)) unless object.status == 200
+        return error(_user_error_message(object)) unless object.status == 200
         info("Displaying information about #{object.username}", :magenta)
         object = extend_object(object)
         attr = object.attributes
