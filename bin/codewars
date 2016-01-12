@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby -U
 
-require 'codewars_cli'
+Signal.trap('INT') { abort }
 
-CodewarsCli::Cli.start(ARGV)
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'codewars_cli/runner'
+CodewarsCli::Runner.new(ARGV.dup).execute!

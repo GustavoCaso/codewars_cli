@@ -1,0 +1,40 @@
+{
+    "username": "GustavoCaso",
+    "name": "",
+    "honor": 325,
+    "clan": "L a Peña",
+    "leaderboardPosition": 1954,
+    "skills": [],
+    "ranks": {
+        "overall": {
+            "rank": -4,
+            "name": "4 kyu",
+            "color": "blue",
+            "score": 1708
+        },
+        "languages": {
+            "ruby": {
+                "rank": -4,
+                "name": "4 kyu",
+                "color": "blue",
+                "score": 1589
+            },
+            "javascript": {
+                "rank": -6,
+                "name": "6 kyu",
+                "color": "yellow",
+                "score": 123
+            },
+            "coffeescript": {
+                "rank": -8,
+                "name": "8 kyu",
+                "color": "white",
+                "score": 6
+            }
+        }
+    },
+    "codeChallenges": {
+        "totalAuthored": 0,
+        "totalCompleted": 121
+    }
+}
