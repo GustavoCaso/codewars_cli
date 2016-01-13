@@ -10,7 +10,7 @@ module CodewarsCli
     end
 
     def client
-      @client ||= Client.connection(Configuration.api_key)
+      @client ||= Client.connection
     end
 
     def extend_object(object)

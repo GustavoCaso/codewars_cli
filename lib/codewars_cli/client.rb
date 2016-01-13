@@ -1,7 +1,7 @@
 module CodewarsCli
   module Client
-    def self.connection(api_key)
-      CodewarsApiRuby.api_key = api_key
+    def self.connection
+      CodewarsApiRuby.api_key = Configuration.api_key
       CodewarsApiRuby
     end
   end
