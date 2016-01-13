@@ -1,4 +1,6 @@
 Feature: Will fetch the next kata and create a description markdown file
+  Background:
+    Given a mocked home directory
   Scenario: Without api key
     Given the config file with:
       """
@@ -39,5 +41,9 @@ Feature: Will fetch the next kata and create a description markdown file
       :folder: fake_home
       """
     When I run `codewars next_kata`
-    Then the output should contain "Creating Kata descrition file in /tmp/fake_home/fake_home/scrabble-best-word/ruby"
+    Then the output should contain "Creating Kata descrition file"
+    And the directory "~/fake_home/scrabble-best-word/ruby" should exist
+    And the file "~/fake_home/scrabble-best-word/ruby/description.md" should exist
+    And the file "~/fake_home/scrabble-best-word/ruby/solution.rb" should exist
+
 

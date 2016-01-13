@@ -1,5 +1,6 @@
 Feature: Display the user information in the terminal
   Background:
+    Given a mocked home directory
     Given the config file with:
       """
       :api_key: 'iT2dAoTLsv8tQe7KVLxe'

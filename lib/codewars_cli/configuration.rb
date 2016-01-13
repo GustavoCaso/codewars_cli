@@ -15,7 +15,7 @@ module CodewarsCli
       if !send(key).empty?
         info "Do you want to overwrite #{key} provide --update option"
       else
-        info "Updating config file located in: #{config_file} with #{key}: #{value}"
+        info "Updating config file with #{key}: #{value}"
         update_value(value, key)
       end
     end

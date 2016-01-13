@@ -46,7 +46,7 @@ module CodewarsCli
 
     def _create_markdown_file(content)
       Dir.chdir(_destination_path) do
-        info("Creating Kata descrition file in #{_destination_path}")
+        info("Creating Kata descrition file")
         File.open(DESCRIPTION_FILE_NAME,'w') { |f| f.write content }
         info("Creating Kata solution file")
         File.open(_solution_file_name, 'w+')
