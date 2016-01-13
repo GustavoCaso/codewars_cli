@@ -1,8 +1,7 @@
-require 'ostruct'
-
 module CodewarsCli
   class SubmitKata
     include Helpers
+    include FileParserHelpers
     def self.find(kata_name, language)
       check_for_api_key
       if kata_name
@@ -21,36 +20,16 @@ module CodewarsCli
     end
 
     def upload_kata
-      kata_info = _get_kata_id_from_description_file
-      code = _get_kata_solution_code
-      response = client.attemp_solution(kata: kata_info, code: code)
+      code = _get_kata_solution_code(kata_name, language)
+      response = client.attemp_solution(kata: _parse_description_file(kata_name, language), code: code)
       Deferred.new(kata_name, language, response, client)
     end
 
     private
 
-    def _get_kata_solution_code
-      Dir.chdir(_kata_path) do
+    def _get_kata_solution_code(kata_name, language)
+      Dir.chdir(_kata_path(kata_name, language)) do
         File.read(_solution_file)
-      end
-    end
-
-    def _get_kata_id_from_description_file
-      Dir.chdir(_kata_path) do
-        description_content = File.read(FileCreator::DESCRIPTION_FILE_NAME)
-        project_id  = _fetch_info(description_content, 'Project ID')
-        solution_id = _fetch_info(description_content, 'Solution ID')
-        OpenStruct.new(project_id: project_id, solution_id: solution_id)
-      end
-    end
-
-    def _fetch_info(content, string)
-      regex = %r(#{string}: (.*))
-      if match = content.match(regex)
-        match[1]
-      else
-        error("The #{string} is missing from your description.md")
-        exit(1)
       end
     end
 
@@ -62,13 +41,5 @@ module CodewarsCli
       CodewarsCli::Language::EXTENSIONS[language]
     end
 
-    def _kata_path
-      path = File.join(ENV['HOME'], Configuration.folder, kata_name, language)
-      unless File.exist?(path)
-        presenter.display_katas_info(kata_name, language)
-        exit(1)
-      end
-      path
-    end
   end
 end
