@@ -7,7 +7,7 @@ module CodewarsCli
         new(language, api_key)
       else
         default_language = Configuration.language
-        fail Thor::Error, "ERROR: You must config the language for this command\nSOLUTION: Set up with `config language LANGUAGE`" if default_language.nil?
+        fail Thor::Error, "ERROR: You must config the language for this command\nSOLUTION: Set up with `config language LANGUAGE`" if default_language.empty?
         new(default_language, api_key)
       end
     end

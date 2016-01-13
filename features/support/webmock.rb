@@ -20,6 +20,15 @@ Before('@stub_user_invalid_response') do
     ).to_return(json_response 'invalid_user.json', 404)
 end
 
+Before('@stub_next_kata_response') do
+  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  language = 'ruby'
+  stub_post("/code-challenges/#{language}/train")
+    .with(
+      headers: { Authorization: api_key }
+    ).to_return(json_response 'kata.json')
+end
+
 
 def stub_get(url)
   stub_request(:get, "#{CODEWARS_BASE}#{CODEWARS_API}#{url}")

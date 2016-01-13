@@ -7,7 +7,7 @@ module CodewarsCli
     DESCRIPTION_FILE_NAME = 'description.md'
     def self.create(kata_info, language)
       folder_path = Configuration.folder
-      fail Thor::Error, "ERROR: You must config the folder\nSOLUTION: Set up with `config folder Folder`" if folder_path.empty?
+      fail Thor::Error, "ERROR: You must config the folder\nSOLUTION: Set up with `config folder FOLDER_LOCATION`" if folder_path.empty?
       new(kata_info, language, folder_path).create_file
     end
 
@@ -26,7 +26,6 @@ module CodewarsCli
     private
 
     def _create_missing_dirs
-      info("Creating necessary directories #{_destination_path}")
       FileUtils.mkdir_p(_destination_path)
     end
 
@@ -47,7 +46,7 @@ module CodewarsCli
 
     def _create_markdown_file(content)
       Dir.chdir(_destination_path) do
-        info("Creating Kata descrition file")
+        info("Creating Kata descrition file in #{_destination_path}")
         File.open(DESCRIPTION_FILE_NAME,'w') { |f| f.write content }
         info("Creating Kata solution file")
         File.open(_solution_file_name, 'w+')
