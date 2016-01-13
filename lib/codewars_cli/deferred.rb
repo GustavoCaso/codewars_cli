@@ -22,6 +22,7 @@ module CodewarsCli
       else
         error('There has been an error uploading the kata please try agin later')
         error("Reason: #{response.reason}")
+        exit(1)
       end
     end
 
@@ -34,13 +35,14 @@ module CodewarsCli
         info "codewars finalize --kata-name=#{kata_name} --language=#{language}", :blue
       else
         error 'The solution has not passed tests on the server. Response:'
-        fail Thor::Error, error(result.reason)
+        error(result.reason)
+        exit(1)
       end
     end
 
     def _display_info_for_unsubmitted_result
-      error_message = "Can't get a result of tests on the server. Try it again."
-      fail Thor::Error, error(Error)
+      error("Can't get a result of tests on the server. Try it again.")
+      exit(1)
     end
 
     def _handle_deferred

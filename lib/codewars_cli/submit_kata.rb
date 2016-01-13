@@ -40,9 +40,19 @@ module CodewarsCli
     def _get_kata_id_from_description_file
       Dir.chdir(_kata_path) do
         description_content = File.read(FileCreator::DESCRIPTION_FILE_NAME)
-        project_id = description_content.match(/Project ID: (.*)/)[1]
-        solution_id = description_content.match(/Solution ID: (.*)/)[1]
+        project_id  = _fetch_info(description_content, 'Project ID')
+        solution_id = _fetch_info(description_content, 'Solution ID')
         OpenStruct.new(project_id: project_id, solution_id: solution_id)
+      end
+    end
+
+    def _fetch_info(content, string)
+      regex = %r(#{string}: (.*))
+      if match = content.match(regex)
+        match[1]
+      else
+        error("The #{string} is missing from your description.md")
+        exit(1)
       end
     end
 

@@ -29,6 +29,57 @@ Before('@stub_next_kata_response') do
     ).to_return(json_response 'kata.json')
 end
 
+Before('@stub_submit_kata_response') do
+  api_key     = 'iT2dAoTLsv8tQe7KVLxe'
+  language    = 'ruby'
+  project_id  = "562cbb369116fb896c00002a"
+  solution_id = "562cbb379116fb896c00002c"
+  stub_post("/code-challenges/projects/#{project_id}/solutions/#{solution_id}/attempt")
+    .with(
+      body: { code: 'solved_kata' },
+      headers: { Authorization: api_key }
+    ).to_return(json_response 'submit_kata_success.json')
+end
+
+Before('@stub_submit_kata_response_invalid') do
+  api_key     = 'iT2dAoTLsv8tQe7KVLxe'
+  language    = 'ruby'
+  project_id  = "562cbb369116fb896c00002a"
+  solution_id = "562cbb379116fb896c00002c"
+  stub_post("/code-challenges/projects/#{project_id}/solutions/#{solution_id}/attempt")
+    .with(
+      body: { code: 'solved_kata' },
+      headers: { Authorization: api_key }
+    ).to_return(json_response 'submit_kata_invalid.json')
+end
+
+Before('@stub_deferred_invalid_response') do
+  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  dmid = "4rsdaDf8d"
+  stub_get("/deferred/#{dmid}")
+    .with(
+      headers: { Authorization: api_key }
+    ).to_return(json_response 'deferred_invalid_response.json')
+end
+
+Before('@stub_deferred_valid_response') do
+  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  dmid = "4rsdaDf8d"
+  stub_get("/deferred/#{dmid}")
+    .with(
+      headers: { Authorization: api_key }
+    ).to_return(json_response 'deferred_valid_response.json')
+end
+
+Before('@stub_deferred_unsubmitted_response') do
+  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  dmid = "4rsdaDf8d"
+  stub_get("/deferred/#{dmid}")
+    .with(
+      headers: { Authorization: api_key }
+    ).to_return(json_response 'deferred_unsubmitted_response.json')
+end
+
 
 def stub_get(url)
   stub_request(:get, "#{CODEWARS_BASE}#{CODEWARS_API}#{url}")
