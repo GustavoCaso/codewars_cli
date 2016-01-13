@@ -4,21 +4,20 @@ module CodewarsCli
   class SubmitKata
     include Helpers
     def self.find(kata_name, language)
-      _check_for_api_key
+      check_for_api_key
       if kata_name
-        new(kata_name, language, Configuration.api_key)
+        new(kata_name, language)
       else
         error("ERROR: You must provide the name of the kata")
         exit(1)
       end
     end
 
-    attr_reader :kata_name, :language, :api_key
+    attr_reader :kata_name, :language
 
-    def initialize(kata_name, language, api_key)
+    def initialize(kata_name, language)
       @kata_name = kata_name
       @language = language || Configuration.language
-      @api_key = api_key
     end
 
     def upload_kata
@@ -70,10 +69,6 @@ module CodewarsCli
         exit(1)
       end
       path
-    end
-
-    def client
-      @client ||= Client.connection(api_key)
     end
   end
 end

@@ -2,35 +2,27 @@ module CodewarsCli
   class Kata
     include Helpers
     def self.fetch(language)
-      _check_for_api_key
+      check_for_api_key
       if language
-        new(language, Configuration.api_key)
+        new(language)
       else
         default_language = Configuration.language
         fail Thor::Error, "ERROR: You must config the language for this command\nSOLUTION: Set up with `config language LANGUAGE`" if default_language.empty?
-        new(default_language, Configuration.api_key)
+        new(default_language)
       end
     end
 
-    attr_reader :language, :api_key
-    def initialize(language, api_key)
+    attr_reader :language
+    def initialize(language)
       @language = language
-      @api_key = api_key
     end
 
     def get_kata
-      client = set_client
       client.next_kata(language: language)
     end
 
     def create_file
       FileCreator.create(get_kata, language)
-    end
-
-    private
-
-    def set_client
-      @client ||= Client.connection(api_key)
     end
   end
 end
