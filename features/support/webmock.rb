@@ -80,6 +80,26 @@ Before('@stub_deferred_unsubmitted_response') do
     ).to_return(json_response 'deferred_unsubmitted_response.json')
 end
 
+Before('@stub_finalize_response') do
+  api_key     = 'iT2dAoTLsv8tQe7KVLxe'
+  project_id  = "562cbb369116fb896c00002a"
+  solution_id = "562cbb379116fb896c00002c"
+  stub_post("/code-challenges/projects/#{project_id}/solutions/#{solution_id}/finalize")
+    .with(
+      headers: { Authorization: api_key }
+    ).to_return(json_response 'finalize_response.json')
+end
+
+Before('@stub_finalize_invalid_response') do
+  api_key     = 'iT2dAoTLsv8tQe7KVLxe'
+  project_id  = "562cbb369116fb896c00002a"
+  solution_id = "562cbb379116fb896c00002c"
+  stub_post("/code-challenges/projects/#{project_id}/solutions/#{solution_id}/finalize")
+    .with(
+      headers: { Authorization: api_key }
+    ).to_return(json_response 'finalize_invalid_response.json')
+end
+
 
 def stub_get(url)
   stub_request(:get, "#{CODEWARS_BASE}#{CODEWARS_API}#{url}")

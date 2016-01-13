@@ -7,7 +7,8 @@ module CodewarsCli
       if kata_name
         new(kata_name, language, api_key).finalize
       else
-        fail Thor::Error, "ERROR: You must provide the name of the kata"
+        error "ERROR: You must provide the name of the kata"
+        exit(1)
       end
     end
 
@@ -20,7 +21,7 @@ module CodewarsCli
     end
 
     def finalize
-      response = client.finalize(kat: _kata)
+      response = client.finalize(kata: _kata)
       if response.success
         info('Your Kata has been uploaded and finish')
       else
@@ -45,7 +46,10 @@ module CodewarsCli
 
     def _kata_path
       path = File.join(ENV['HOME'], Configuration.folder, kata_name, language)
-      fail Thor::Error, "ERROR: The kata you specify is not found in your folder" unless File.exist?(path)
+      unless File.exist?(path)
+        presenter.display_katas_info(kata_name, language)
+        exit(1)
+      end
       path
     end
   end
