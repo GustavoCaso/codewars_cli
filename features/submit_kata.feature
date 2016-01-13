@@ -3,10 +3,14 @@ Feature: Submit Kata and will return a deferred response
     Given a mocked home directory
     Given the config file with:
       """
-      :api_key: 'iT2dAoTLsv8tQe7KVLxe'
+      :api_key: 'fake_api'
       :language: 'java'
       :folder: fake_home
       """
+
+  Scenario: Wrong kata name
+    When I run `codewars submit_kata --kata-name=uyevuce`
+    Then the output should contain "The is no kata with that name 'uyevuce' and language 'java'\nTo help here is a list of all your katas order by language"
 
   Scenario: No provide kata name
     And I run `codewars submit_kata`

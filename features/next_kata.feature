@@ -1,6 +1,7 @@
 Feature: Will fetch the next kata and create a description markdown file
   Background:
     Given a mocked home directory
+
   Scenario: Without api key
     Given the config file with:
       """
@@ -15,7 +16,7 @@ Feature: Will fetch the next kata and create a description markdown file
   Scenario: With out folder
     Given the config file with:
       """
-      :api_key: 'iT2dAoTLsv8tQe7KVLxe'
+      :api_key: 'fake_api'
       :language: 'ruby'
       :folder: ''
       """
@@ -25,7 +26,7 @@ Feature: Will fetch the next kata and create a description markdown file
   Scenario: Without language
     Given the config file with:
       """
-      :api_key: 'iT2dAoTLsv8tQe7KVLxe'
+      :api_key: 'fake_api'
       :language: ''
       :folder: fake_home
       """
@@ -36,7 +37,7 @@ Feature: Will fetch the next kata and create a description markdown file
   Scenario: Using the language from the config file
     Given the config file with:
       """
-      :api_key: 'iT2dAoTLsv8tQe7KVLxe'
+      :api_key: 'fake_api'
       :language: 'ruby'
       :folder: fake_home
       """

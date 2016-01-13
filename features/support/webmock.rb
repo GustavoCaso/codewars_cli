@@ -5,7 +5,7 @@ CODEWARS_BASE = 'https://www.codewars.com'
 CODEWARS_API = '/api/v1'
 
 Before('@stub_user_response') do
-  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key = 'fake_api'
   stub_get("/users/GustavoCaso")
     .with(
       headers: { Authorization: api_key }
@@ -13,7 +13,7 @@ Before('@stub_user_response') do
 end
 
 Before('@stub_user_invalid_response') do
-  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key = 'fake_api'
   stub_get("/users/e62e8g")
     .with(
       headers: { Authorization: api_key }
@@ -21,7 +21,7 @@ Before('@stub_user_invalid_response') do
 end
 
 Before('@stub_next_kata_response') do
-  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key = 'fake_api'
   language = 'ruby'
   stub_post("/code-challenges/#{language}/train")
     .with(
@@ -30,7 +30,7 @@ Before('@stub_next_kata_response') do
 end
 
 Before('@stub_submit_kata_response') do
-  api_key     = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key     = 'fake_api'
   language    = 'ruby'
   project_id  = "562cbb369116fb896c00002a"
   solution_id = "562cbb379116fb896c00002c"
@@ -42,7 +42,7 @@ Before('@stub_submit_kata_response') do
 end
 
 Before('@stub_submit_kata_response_invalid') do
-  api_key     = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key     = 'fake_api'
   language    = 'ruby'
   project_id  = "562cbb369116fb896c00002a"
   solution_id = "562cbb379116fb896c00002c"
@@ -54,7 +54,7 @@ Before('@stub_submit_kata_response_invalid') do
 end
 
 Before('@stub_deferred_invalid_response') do
-  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key = 'fake_api'
   dmid = "4rsdaDf8d"
   stub_get("/deferred/#{dmid}")
     .with(
@@ -63,7 +63,7 @@ Before('@stub_deferred_invalid_response') do
 end
 
 Before('@stub_deferred_valid_response') do
-  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key = 'fake_api'
   dmid = "4rsdaDf8d"
   stub_get("/deferred/#{dmid}")
     .with(
@@ -72,7 +72,7 @@ Before('@stub_deferred_valid_response') do
 end
 
 Before('@stub_deferred_unsubmitted_response') do
-  api_key = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key = 'fake_api'
   dmid = "4rsdaDf8d"
   stub_get("/deferred/#{dmid}")
     .with(
@@ -81,7 +81,7 @@ Before('@stub_deferred_unsubmitted_response') do
 end
 
 Before('@stub_finalize_response') do
-  api_key     = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key     = 'fake_api'
   project_id  = "562cbb369116fb896c00002a"
   solution_id = "562cbb379116fb896c00002c"
   stub_post("/code-challenges/projects/#{project_id}/solutions/#{solution_id}/finalize")
@@ -91,7 +91,7 @@ Before('@stub_finalize_response') do
 end
 
 Before('@stub_finalize_invalid_response') do
-  api_key     = 'iT2dAoTLsv8tQe7KVLxe'
+  api_key     = 'fake_api'
   project_id  = "562cbb369116fb896c00002a"
   solution_id = "562cbb379116fb896c00002c"
   stub_post("/code-challenges/projects/#{project_id}/solutions/#{solution_id}/finalize")

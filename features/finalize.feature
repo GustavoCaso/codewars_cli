@@ -3,7 +3,7 @@ Feature: Finalize command
     Given a mocked home directory
     Given the config file with:
       """
-      :api_key: 'iT2dAoTLsv8tQe7KVLxe'
+      :api_key: 'fake_api'
       :language: 'java'
       :folder: 'fake_home'
       """
