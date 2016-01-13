@@ -2,9 +2,8 @@ module CodewarsCli
   class User
     include Helpers
     def self.fetch(username_or_id)
-      api_key = Configuration.api_key
-      fail Thor::Error, "ERROR: You must config the api_key\nSOLUTION: Set up with `config api_key KEY`" if api_key.empty?
-      new(username_or_id, api_key)
+      _check_for_api_key
+      new(username_or_id, Configuration.api_key)
     end
 
     attr_reader :username_or_id, :api_key

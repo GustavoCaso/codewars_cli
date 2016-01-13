@@ -1,14 +1,14 @@
 module CodewarsCli
   class Kata
+    include Helpers
     def self.fetch(language)
-      api_key = Configuration.api_key
-      fail Thor::Error, "ERROR: You must config the api_key\nSOLUTION: Set up with `config api_key KEY`" if api_key.empty?
+      _check_for_api_key
       if language
-        new(language, api_key)
+        new(language, Configuration.api_key)
       else
         default_language = Configuration.language
         fail Thor::Error, "ERROR: You must config the language for this command\nSOLUTION: Set up with `config language LANGUAGE`" if default_language.empty?
-        new(default_language, api_key)
+        new(default_language, Configuration.api_key)
       end
     end
 

@@ -4,10 +4,9 @@ module CodewarsCli
   class SubmitKata
     include Helpers
     def self.find(kata_name, language)
-      api_key = Configuration.api_key
-      fail Thor::Error, "ERROR: You must config the api_key\nSOLUTION: Set up with `config api_key KEY`" if api_key.empty?
+      _check_for_api_key
       if kata_name
-        new(kata_name, language, api_key)
+        new(kata_name, language, Configuration.api_key)
       else
         error("ERROR: You must provide the name of the kata")
         exit(1)

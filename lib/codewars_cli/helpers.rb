@@ -5,6 +5,10 @@ module CodewarsCli
       base.extend(self)
     end
 
+    def _check_for_api_key
+      fail Thor::Error ,"ERROR: You must config the api_key\nSOLUTION: Set up with `config api_key KEY`" if Configuration.api_key.empty?
+    end
+
     def extend_object(object)
       object.extend(Concerns::AttributesMethods)
       object
