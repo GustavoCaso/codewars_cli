@@ -1,7 +1,7 @@
 require 'yaml'
 module CodewarsCli
   module Configuration
-    include Helpers
+    include GenericHelpers
     CONFIG_FILE = '.codewars.rc.yml'
     CONFIG_CONTENTS = {
       api_key: '',

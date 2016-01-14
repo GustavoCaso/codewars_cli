@@ -3,7 +3,7 @@ require 'erb'
 
 module CodewarsCli
   class FileCreator
-    include Helpers
+    include GenericHelpers
     DESCRIPTION_FILE_NAME = 'description.md'
     def self.create(kata_info, language)
       folder_path = Configuration.folder
@@ -31,7 +31,7 @@ module CodewarsCli
 
     def _fill_template_with_kata_info
       b = _create_binding
-      template = File.read(File.expand_path('../template.erb', __FILE__))
+      template = File.read(File.expand_path('../templates/description.erb', __FILE__))
       content = ERB.new(template).result(b)
       _create_markdown_file(content)
     end

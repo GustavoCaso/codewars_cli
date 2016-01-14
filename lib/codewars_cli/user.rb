@@ -1,6 +1,6 @@
 module CodewarsCli
   class User
-    include Helpers
+    include GenericHelpers
     def self.fetch(username_or_id)
       check_for_api_key
       new(username_or_id)

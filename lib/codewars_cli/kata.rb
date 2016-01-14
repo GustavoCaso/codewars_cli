@@ -1,6 +1,6 @@
 module CodewarsCli
   class Kata
-    include Helpers
+    include GenericHelpers
     def self.fetch(language)
       check_for_api_key
       if language

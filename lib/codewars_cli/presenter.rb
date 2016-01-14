@@ -1,6 +1,6 @@
 module CodewarsCli
   class Presenter < Thor
-    include Helpers
+    include GenericHelpers
     no_commands do
       def display_user_info(object)
         return error(_user_error_message(object)) unless object.status == 200

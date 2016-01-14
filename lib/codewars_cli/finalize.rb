@@ -1,6 +1,6 @@
 module CodewarsCli
   class Finalize
-    include Helpers
+    include GenericHelpers
     include FileParserHelpers
     def self.find(kata_name, language)
       check_for_api_key

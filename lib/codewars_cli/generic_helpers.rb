@@ -1,6 +1,6 @@
 require 'codewars_cli/concerns/attributes_methods'
 module CodewarsCli
-  module Helpers
+  module GenericHelpers
     def self.included(base)
       base.extend(self)
     end

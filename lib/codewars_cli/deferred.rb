@@ -1,6 +1,6 @@
 module CodewarsCli
   class Deferred
-    include Helpers
+    include GenericHelpers
     REQUEST_TIMES = 10
     attr_reader :kata_name, :language, :response, :client
     def initialize(kata_name, language, response, client)
