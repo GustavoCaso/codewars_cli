@@ -1,20 +1,8 @@
 # CodewarsCli
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/codewars_cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+With this command you would be able to enjoy [Codewars](http://www.codewars.com/), a site where you can practice your coding skills
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'codewars_cli'
-```
-
-And then execute:
-
-    $ bundle
 
 Or install it yourself as:
 
@@ -22,17 +10,87 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The start working you would need an account in [Codewars](http://www.codewars.com/join), if you have it already great!.
+To start using the CLI you will need to add some configuration first.
 
-## Development
+##Comands
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Configiguration
+There are a few commands you can use to configuration your CLI, the most important one is to setup your api_key, first you will need to get it from your account of Codewars. 
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To setup your api_key `codewars config api_key YOUR_API_KEY`.
 
+There are other options you can configure **language** and **folder**.
+
+The language is your favorite option for downloading even you can specify everytime you download a new Kata.
+
+To setup your language `codewars config language LANGUAGE`.
+
+### Valid Languages
+
+```
+ruby
+javascript
+java
+coffeescript
+haskell
+clojure
+c
+pythom
+```
+
+
+The folder option is where all your description file will be downloaded, the file structure will be:
+`~/YOUR_FOLDER/#{NAME_OF_THE_KATA}/#{LANGUAGE}`
+
+To setup your language `codewars config folder FOLDER`.
+
+Once you have add your configuration you can changed but you will have to pass a flag `update` to tell the application to overwrite it.
+
+To overwrite your api_key `codewars config api_key YOUR_API_KEY --update`.
+
+### User
+Display all the information related to an Codewars user in your Terminal
+
+`codewars user USERNAME_OR_ID` will display the information well formatted for your eyes.
+
+### Next Kata
+Start a new session of training and download all the information of the kata to your computer.
+This command will create a `description.md` file with all the information of the Kata and some metadata that is need it for submiting the kata later. Also it will create a `solution.{LANGUAGE_EXTENSION}` file where you should place your code in other to be uploaded when submitting the kata.
+
+`codewars next_kata`
+
+To specify a a different language just add a new param as the language you want to train.
+
+`codewars next_kata javascript`
+
+### Submit Kata
+When submitting a kata, the application will upload your code to the Codewars server and will wait for the server to respond with the result, depending on the respond, the kata could be **finalized** or keep working on it.
+
+To submit use `codewars submit --kata-name=KATA_NAME`
+
+By Default it will use you predefined language, but you can always specify a different one:
+
+`codewars submit --kata-name=KATA_NAME --language=LANGUAGE` [Valid languages](#valid-languages)
+
+
+In case the name is not correct it will display a formatted list with all your katas to help you.
+
+### Finalize
+This is the last step of the process.
+
+To finish a kata type `codewars finalize --kata-name=KATA_NAME` [Valid languages](#valid-languages)
+
+As well you can specify the language of the kata `codewars finalize --kata-name=KATA_NAME --language=LANGUAGE`
+
+It will close the kata four you.
+
+
+
+  
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/codewars_cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/GustavoCaso/codewars_cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
