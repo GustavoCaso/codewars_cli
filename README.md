@@ -11,18 +11,18 @@ Or install it yourself as:
 ## Usage
 
 The start working you would need an account in [Codewars](http://www.codewars.com/join), if you have it already great!.
-To start using the CLI you will need to add some configuration first.
+To start using the CLI you will need setup up a few things first.
 
 ##Comands
 
 ### Configiguration
-There are a few commands you can use to configuration your CLI, the most important one is to setup your api_key, first you will need to get it from your account of Codewars. 
+There are a few commands you can use to configuration your CLI, the most important one is to setup your api_key, first you will need to get it from your account of [Codewars](https://www.codewars.com/users/edit).
 
 To setup your api_key `codewars config api_key YOUR_API_KEY`.
 
 There are other options you can configure **language** and **folder**.
 
-The language is your favorite option for downloading even you can specify everytime you download a new Kata.
+The language is your favorite option for downloading. Also you can specify everytime you start a new session what language you want use.
 
 To setup your language `codewars config language LANGUAGE`.
 
@@ -40,25 +40,30 @@ pythom
 ```
 
 
-The folder option is where all your description file will be downloaded, the file structure will be:
-`~/YOUR_FOLDER/#{NAME_OF_THE_KATA}/#{LANGUAGE}`
+The folder option is where all your description file will be downloaded.
+
+The file structure will be: `~/YOUR_FOLDER/#{NAME_OF_THE_KATA}/#{LANGUAGE}`
 
 To setup your language `codewars config folder FOLDER`.
 
-Once you have add your configuration you can changed but you will have to pass a flag `update` to tell the application to overwrite it.
+Once you have finish the setup up,  you can changed but you will have to pass a flag `update` to tell the application to overwrite it.
+
+##### Example
 
 To overwrite your api_key `codewars config api_key YOUR_API_KEY --update`.
 
 ### User
-Display all the information related to an Codewars user in your Terminal
+Display all the information related to a Codewars user in your Terminal.
 
 `codewars user USERNAME_OR_ID` will display the information well formatted for your eyes.
 
 ### Next Kata
-Start a new session of training and download all the information of the kata to your computer.
-This command will create a `description.md` file with all the information of the Kata and some metadata that is need it for submiting the kata later. Also it will create a `solution.{LANGUAGE_EXTENSION}` file where you should place your code in other to be uploaded when submitting the kata.
+Start a new session of training and download all the information related to a new kata.
+This command will create a `description.md` file with all the information of the Kata and some metadata that is need it for submiting the kata later.
 
-`codewars next_kata`
+Also it will create a `solution.{LANGUAGE_EXTENSION}` file where you should place your code in other to be uploaded when submitting the kata.
+
+`codewars next_kata` [Valid languages](#valid-languages)
 
 To specify a a different language just add a new param as the language you want to train.
 
@@ -74,20 +79,20 @@ By Default it will use you predefined language, but you can always specify a dif
 `codewars submit --kata-name=KATA_NAME --language=LANGUAGE` [Valid languages](#valid-languages)
 
 
-In case the name is not correct it will display a formatted list with all your katas to help you.
+In case the name is not correct it will display a formatted list with all your katas order by language to help you.
 
 ### Finalize
 This is the last step of the process.
 
-To finish a kata type `codewars finalize --kata-name=KATA_NAME` [Valid languages](#valid-languages)
+To finish a kata type `codewars finalize --kata-name=KATA_NAME`
 
-As well you can specify the language of the kata `codewars finalize --kata-name=KATA_NAME --language=LANGUAGE`
+As well you can specify the language of the kata `codewars finalize --kata-name=KATA_NAME --language=LANGUAGE` [Valid languages](#valid-languages)
 
 It will close the kata four you.
 
 
 
-  
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/GustavoCaso/codewars_cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
