@@ -15,7 +15,7 @@ To start using the CLI you will need setup up a few things first.
 
 ##Comands
 
-### Configiguration
+### Configuration
 There are a few commands you can use to configuration your CLI, the most important one is to setup your api_key, first you will need to get it from your account of [Codewars](https://www.codewars.com/users/edit).
 
 To setup your api_key `codewars config api_key YOUR_API_KEY`.
