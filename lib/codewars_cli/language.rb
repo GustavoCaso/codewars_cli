@@ -6,9 +6,9 @@ module CodewarsCli
       'clojure'     => 'clj',
       'coffescript' => 'coffee',
       'c'           => 'cs',
-      'haskell'    => 'hs',
+      'haskell'     => 'hs',
       'java'        => 'java',
-      'pythom'      => 'py',
+      'python'      => 'py',
     }
   end
 end

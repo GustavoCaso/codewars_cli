@@ -10,7 +10,7 @@ module CodewarsCli
     end
 
     desc 'next_kata', 'start a new session training session and create markdown page with kata information'
-    option :language, banner: " ruby | cs | javascript | java | coffescript | haskell | clojure"
+    option :language, banner: " ruby | c | javascript | java | coffescript | haskell | clojure"
     def next_kata
       kata = Kata.fetch(options[:language])
       kata.create_file

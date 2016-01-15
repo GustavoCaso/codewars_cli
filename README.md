@@ -36,7 +36,7 @@ coffeescript
 haskell
 clojure
 c
-pythom
+python
 ```
 
 
