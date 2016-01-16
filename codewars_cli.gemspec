@@ -9,9 +9,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ["GustavoCaso"]
   spec.email         = ["gustavocaso@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{CLI tool to interact with codewars in the comfort of your terminal}
+  spec.description   = %q{CLI tool to interact with codewars in the comfort of your terminal,
+                          allow you to fetch users information, kata, upload solutions and close it.
+                         }
+  spec.homepage      = "https://github.com/GustavoCaso/codewars_cli"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
@@ -19,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency 'thor'
-  spec.add_runtime_dependency "codewars_api_ruby"
+  spec.add_runtime_dependency "codewars_client"
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"

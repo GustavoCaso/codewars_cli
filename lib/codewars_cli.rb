@@ -1,5 +1,5 @@
 require 'thor'
-require 'codewars_api_ruby'
+require 'codewars_client'
 require 'codewars_cli/file_parser_helpers'
 require "codewars_cli/generic_helpers"
 require "codewars_cli/presenter"
