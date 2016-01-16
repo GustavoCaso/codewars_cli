@@ -57,6 +57,8 @@ Display all the information related to a Codewars user in your Terminal.
 
 `codewars user USERNAME_OR_ID` will display the information well formatted for your eyes.
 
+![User_dispay_info](https://cloud.githubusercontent.com/assets/4672858/12372466/8bb2e012-bc58-11e5-8fac-325108ebfdf6.png)
+
 ### Next Kata
 Start a new session of training and download all the information related to a new kata.
 This command will create a `description.md` file with all the information of the Kata and some metadata that is need it for submiting the kata later.
