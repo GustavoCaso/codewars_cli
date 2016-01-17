@@ -5,9 +5,7 @@ With this command you would be able to enjoy [Codewars](http://www.codewars.com/
 
 ## Installation
 
-Or install it yourself as:
-
-    $ gem install codewars_cli
+  $ gem install codewars_cli
 
 ## Usage
 
