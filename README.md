@@ -1,3 +1,4 @@
+![Travis Build](https://travis-ci.org/GustavoCaso/codewars_cli.svg?branch=master)
 # CodewarsCli
 
 With this command you would be able to enjoy [Codewars](http://www.codewars.com/), a site where you can practice your coding skills
