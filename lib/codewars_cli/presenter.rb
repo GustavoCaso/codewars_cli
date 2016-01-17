@@ -15,7 +15,7 @@ module CodewarsCli
       end
 
       def display_katas_info(kata_name, language)
-        error("The is no kata with that name '#{kata_name}' and language '#{language}'")
+        error("There is no kata with that name '#{kata_name}' and language '#{language}'")
         info('To help here is a list of all your katas order by language', :magenta)
         _katas_info.each do |language, katas|
           _print_attributes(language, katas.join(','))

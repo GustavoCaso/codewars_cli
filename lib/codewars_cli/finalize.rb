@@ -4,12 +4,7 @@ module CodewarsCli
     include FileParserHelpers
     def self.find(kata_name, language)
       check_for_api_key
-      if kata_name
-        new(kata_name, language).finalize
-      else
-        error "ERROR: You must provide the name of the kata"
-        exit(1)
-      end
+      new(kata_name, language).finalize
     end
 
     attr_reader :kata_name, :language

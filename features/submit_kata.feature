@@ -9,15 +9,8 @@ Feature: Submit Kata and will return a deferred response
       """
 
   Scenario: Wrong kata name
-    When I run `codewars submit_kata --kata-name=uyevuce`
+    When I run `codewars submit_kata uyevuce`
     Then the output should contain "The is no kata with that name 'uyevuce' and language 'java'\nTo help here is a list of all your katas order by language"
-
-  Scenario: No provide kata name
-    And I run `codewars submit_kata`
-    Then the output should contain exactly:
-      """
-      ERROR: You must provide the name of the kata
-      """
 
   Scenario: No api key provided
     Given a mocked home directory
@@ -27,7 +20,7 @@ Feature: Submit Kata and will return a deferred response
       :language: 'java'
       :folder: fake_home
       """
-    And I run `codewars submit_kata`
+    And I run `codewars submit_kata fake_kata`
     Then the output should contain exactly:
       """
       ERROR: You must config the api_key
@@ -44,12 +37,12 @@ Feature: Submit Kata and will return a deferred response
       Solution ID: 562cbb379116fb896c00002c
       Other information
       """
-    And I run `codewars submit_kata --kata-name=anything-to-integer`
+    And I run `codewars submit_kata anything-to-integer`
     Then the output should contain exactly:
       """
       Your solution has been uploaded waiting for results
       The solution has passed all tests on the server.
-      If you are happy with your solution please type\ncodewars finalize --kata-name=anything-to-integer --language=java
+      If you are happy with your solution please type\ncodewars finalize anything-to-integer --language=java
       """
 
   @stub_submit_kata_response_invalid
@@ -62,7 +55,7 @@ Feature: Submit Kata and will return a deferred response
       Solution ID: 562cbb379116fb896c00002c
       Other information
       """
-    And I run `codewars submit_kata --kata-name=anything-to-integer`
+    And I run `codewars submit_kata anything-to-integer`
     Then the output should contain exactly:
       """
       There has been an error uploading the kata please try agin later
@@ -79,7 +72,7 @@ Feature: Submit Kata and will return a deferred response
       Solution ID: 562cbb379116fb896c00002c
       Other information
       """
-    And I run `codewars submit_kata --kata-name=anything-to-integer`
+    And I run `codewars submit_kata anything-to-integer`
     Then the output should contain exactly:
       """
       Your solution has been uploaded waiting for results
@@ -96,7 +89,7 @@ Feature: Submit Kata and will return a deferred response
       Solution ID: 562cbb379116fb896c00002c
       Other information
       """
-    And I run `codewars submit_kata --kata-name=anything-to-integer`
+    And I run `codewars submit_kata anything-to-integer`
     Then the output should contain exactly:
       """
       Your solution has been uploaded waiting for results
@@ -112,7 +105,7 @@ Feature: Submit Kata and will return a deferred response
       Solution ID: 562cbb379116fb896c00002c
       Other information
       """
-    And I run `codewars submit_kata --kata-name=anything-to-integer`
+    And I run `codewars submit_kata anything-to-integer`
     Then the output should contain exactly:
       """
       The Project ID is missing from your description.md
@@ -126,7 +119,7 @@ Feature: Submit Kata and will return a deferred response
       Project ID: 562cbb379116fb896c00002c
       Other information
       """
-    And I run `codewars submit_kata --kata-name=anything-to-integer`
+    And I run `codewars submit_kata anything-to-integer`
     Then the output should contain exactly:
       """
       The Solution ID is missing from your description.md

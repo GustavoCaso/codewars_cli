@@ -32,7 +32,7 @@ module CodewarsCli
       if result.valid
         info 'The solution has passed all tests on the server.'
         info 'If you are happy with your solution please type'
-        info "codewars finalize --kata-name=#{kata_name} --language=#{language}", :blue
+        info "codewars finalize #{kata_name} --language=#{language}", :blue
       else
         error 'The solution has not passed tests on the server. Response:'
         error(result.reason)

@@ -8,11 +8,11 @@ Feature: Finalize command
       :folder: 'fake_home'
       """
 
-  Scenario: No provide kata name
-    And I run `codewars finalize`
-    Then the output should contain exactly:
+  Scenario: Provide invalid kata name
+    And I run `codewars finalize non_existing_kata`
+    Then the output should contain:
       """
-      ERROR: You must provide the name of the kata
+      There is no kata with that name 'non_existing_kata' and language 'java'
       """
 
   Scenario: No api key provided
@@ -23,7 +23,7 @@ Feature: Finalize command
       :language: 'java'
       :folder: fake_home
       """
-    And I run `codewars finalize`
+    And I run `codewars finalize fake_kata`
     Then the output should contain exactly:
       """
       ERROR: You must config the api_key
@@ -40,7 +40,7 @@ Feature: Finalize command
       Solution ID: 562cbb379116fb896c00002c
       Other information
       """
-    And I run `codewars finalize --kata-name=anything-to-integer`
+    And I run `codewars finalize anything-to-integer`
     Then the output should contain exactly:
       """
       Your Kata has been uploaded and finish
@@ -56,7 +56,7 @@ Feature: Finalize command
       Solution ID: 562cbb379116fb896c00002c
       Other information
       """
-    And I run `codewars finalize --kata-name=anything-to-integer`
+    And I run `codewars finalize anything-to-integer`
     Then the output should contain exactly:
       """
       There has been an error finalizing your kata not found

@@ -74,11 +74,11 @@ To specify a a different language just add a new param as the language you want 
 ### Submit Kata
 When submitting a kata, the application will upload your code to the Codewars server and will wait for the server to respond with the result, depending on the respond, the kata could be **finalized** or keep working on it.
 
-To submit use `codewars submit --kata-name=KATA_NAME`
+To submit use `codewars submit KATA_NAME`
 
 By Default it will use you predefined language, but you can always specify a different one:
 
-`codewars submit --kata-name=KATA_NAME --language=LANGUAGE` [Valid languages](#valid-languages)
+`codewars submit KATA_NAME --language=LANGUAGE` [Valid languages](#valid-languages)
 
 
 In case the name is not correct it will display a formatted list with all your katas order by language to help you.
@@ -86,9 +86,9 @@ In case the name is not correct it will display a formatted list with all your k
 ### Finalize
 This is the last step of the process.
 
-To finish a kata type `codewars finalize --kata-name=KATA_NAME`
+To finish a kata type `codewars finalize KATA_NAME`
 
-As well you can specify the language of the kata `codewars finalize --kata-name=KATA_NAME --language=LANGUAGE` [Valid languages](#valid-languages)
+As well you can specify the language of the kata `codewars finalize KATA_NAME --language=LANGUAGE` [Valid languages](#valid-languages)
 
 It will close the kata four you.
 
