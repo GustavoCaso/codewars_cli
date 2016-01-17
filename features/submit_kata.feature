@@ -10,7 +10,7 @@ Feature: Submit Kata and will return a deferred response
 
   Scenario: Wrong kata name
     When I run `codewars submit_kata uyevuce`
-    Then the output should contain "The is no kata with that name 'uyevuce' and language 'java'\nTo help here is a list of all your katas order by language"
+    Then the output should contain "There is no kata with that name 'uyevuce' and language 'java'\nTo help here is a list of all your katas order by language"
 
   Scenario: No api key provided
     Given a mocked home directory
